@@ -16,7 +16,7 @@ public class GerenciadorDeTarefas {
 
     public void concluirTarefa(int indice) {
 
-        Tarefa indiceTarefa = tarefas.get(indice);
+        Tarefa indiceTarefa = tarefas.get(indice - 1);
         indiceTarefa.setStatus(Status.CONCLUIDO);
     }
 
@@ -28,11 +28,13 @@ public class GerenciadorDeTarefas {
 
     public String listarTarefas() {
         String resultado = null;
-        for (Tarefa tarefa : tarefas) {
+        for (int i = 0; i < tarefas.size(); i++)
+        //for (Tarefa tarefa : tarefas)
+            {
             if (resultado == null) {
-                resultado = ("nome: " + tarefa.getNome() + " Status: " + tarefa.getStatus());
+                resultado = (i + 1) + " nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus();
             } else {
-                resultado += ("\n nome: " + tarefa.getNome() + " Status: " + tarefa.getStatus());
+                resultado += ("\n" + (i + 1) + " nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus());
             }
         }
         return resultado;

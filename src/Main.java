@@ -12,7 +12,7 @@ public class Main {
         GerenciadorDeTarefas gerente = new GerenciadorDeTarefas();
             while (!sair) {
 
-                System.out.println("Tarefas - Menu");
+                System.out.println("Tarefas - Menu - Sair");
                 String escolhausrmenu = entrada.nextLine();
 
                 switch (escolhausrmenu) {
@@ -23,17 +23,23 @@ public class Main {
 
                     case "Tarefas":
                     case "tarefas":
+
                         String showtarefas = gerente.listarTarefas();
                         if(showtarefas == null) {
                             System.out.println("\n Voce nao tem nenhuma tarefa adicionada, \n por favor, adicione alguma.");
                         }else System.out.println(showtarefas);
 
                         break;
+                    case "Sair":
+                    case "sair":
+                        System.out.println("Encerrando...");
+                        sair = true;
+                        break;
 
                 }
 
                 if (menu) {
-                System.out.println("O que deseja fazer? \n adicionar: Adicionar uma tarefa. \n concluir: Concluir uma tarefa. \n cancelar: Cancelar uma tarefa. \n sair: Encerra o programa");
+                System.out.println("O que deseja fazer? \n adicionar: Adicionar uma tarefa. \n concluir: Concluir uma tarefa. \n cancelar: Cancelar uma tarefa. \n voltar: volta para o menu");
                 String escolhausr = entrada.nextLine();
                 switch (escolhausr) {
                     case "Adicionar":
@@ -46,18 +52,19 @@ public class Main {
                         break;
                     case "Concluir":
                     case "concluir":
-                        System.out.println("Qual tarefa deseja concluir?");
+                        System.out.println("Qual o numero da tarefa que deseja concluir?");
+                        gerente.concluirTarefa(entrada.nextInt());
 
                         break;
                     case "Cancelar":
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
                         break;
-                    case "Sair":
-                    case "sair":
-                        System.out.println("Encerrando...");
-                        sair = true;
+                    case "Voltar":
+                    case "voltar":
+                        menu = false;
                         break;
+
 
                     default:
                         System.out.println("Por favor, digite uma opção válida.");
