@@ -22,10 +22,10 @@ public class GerenciadorDeTarefas {
 
     public void cancelarTarefa(int indice) {
 
-        Tarefa indiceTarefa = tarefas.get(indice);
+        Tarefa indiceTarefa = tarefas.get(indice - 1);
         indiceTarefa.setStatus(Status.CANCELADO);
         if (indiceTarefa.getStatus() == Status.CANCELADO){
-            tarefas.remove(indice);
+           tarefas.remove(indice - 1);
         }
 
     }
