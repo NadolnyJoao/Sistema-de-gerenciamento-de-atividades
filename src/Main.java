@@ -59,6 +59,7 @@ public class Main {
                     case "Cancelar":
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
+                        gerente.cancelarTarefa(entrada.nextInt());
                         break;
                     case "Voltar":
                     case "voltar":

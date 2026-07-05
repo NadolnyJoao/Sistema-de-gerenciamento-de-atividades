@@ -24,6 +24,10 @@ public class GerenciadorDeTarefas {
 
         Tarefa indiceTarefa = tarefas.get(indice);
         indiceTarefa.setStatus(Status.CANCELADO);
+        if (indiceTarefa.getStatus() == Status.CANCELADO){
+            tarefas.remove(indice);
+        }
+
     }
 
     public String listarTarefas() {
