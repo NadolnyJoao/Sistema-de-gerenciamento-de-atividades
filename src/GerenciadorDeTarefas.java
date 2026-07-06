@@ -16,8 +16,14 @@ public class GerenciadorDeTarefas {
 
     public void concluirTarefa(int indice) {
 
-        Tarefa indiceTarefa = tarefas.get(indice - 1);
-        indiceTarefa.setStatus(Status.CONCLUIDO);
+        if ( indice <= 0 || indice > tarefas.toArray().length){
+            System.out.println("Numero invalido, por favor, digite outra opçao");
+        }else  {
+            Tarefa indiceTarefa = tarefas.get(indice - 1);
+            indiceTarefa.setStatus(Status.CONCLUIDO);}
+
+
+
     }
 
     public void cancelarTarefa(int indice) {
