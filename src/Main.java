@@ -50,16 +50,20 @@ public class Main {
                         System.out.println(showtarefas);
                         menu = false;
                         break;
+
                     case "Concluir":
                     case "concluir":
                         System.out.println("Qual o numero da tarefa que deseja concluir?");
                         gerente.concluirTarefa(entrada.nextInt());
-
+                        System.out.println("Tarefa concluida, o que deseja fazer agora?  ");
+                        menu = false;
                         break;
                     case "Cancelar":
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
                         gerente.cancelarTarefa(entrada.nextInt());
+                        System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
+                        menu = false;
                         break;
                     case "Voltar":
                     case "voltar":
