@@ -14,8 +14,9 @@ public class Main {
 
                 System.out.println("Tarefas - Menu - Sair");
                 String escolhausrmenu = entrada.nextLine();
-
+                String noEnter = escolhausrmenu.replace("\n" , " ");
                 switch (escolhausrmenu) {
+
                     case "Menu":
                     case "menu":
                         menu = true;
@@ -73,7 +74,7 @@ public class Main {
 
                     default:
                         System.out.println("Por favor, digite uma opção válida.");
-
+                        menu = false;
                 }
 
 
