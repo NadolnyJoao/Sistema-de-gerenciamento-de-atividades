@@ -26,13 +26,19 @@ public class GerenciadorDeTarefas {
 
     }
 
-    public void cancelarTarefa(int indice) {
+    public void cancelarTarefa(String nome) {
 
-        Tarefa indiceTarefa = tarefas.get(indice - 1);
-        indiceTarefa.setStatus(Status.CANCELADO);
-        if (indiceTarefa.getStatus() == Status.CANCELADO){
-           tarefas.remove(indice - 1);
+        int indiceencontrado = procurarTarefas(nome);
+        if (indiceencontrado == -1) {
+            System.out.println("Nao encontrado");
+        }else {
+            Tarefa indiceTarefa = tarefas.get(indiceencontrado);
+            indiceTarefa.setStatus(Status.CANCELADO);
+            tarefas.remove(indiceencontrado);
         }
+
+
+
 
     }
     private int procurarTarefas(String nome) {

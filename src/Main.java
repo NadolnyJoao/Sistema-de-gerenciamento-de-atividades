@@ -62,7 +62,7 @@ public class Main {
                     case "Cancelar":
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
-                        gerente.cancelarTarefa(entrada.nextInt());
+                        gerente.cancelarTarefa(entrada.nextLine());
                         System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
                         menu = false;
                         break;
