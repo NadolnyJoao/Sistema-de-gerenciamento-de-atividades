@@ -14,19 +14,21 @@ public class GerenciadorDeTarefas {
         tarefas.add(novaTarefa);
     }
 
-    public void concluirTarefa(String nome) {
+    public boolean concluirTarefa(String nome) {
 
         int indiceencontrado = procurarTarefas(nome);
         if (indiceencontrado == -1) {
             System.out.println("Nao encontrado");
         }else {
+
             Tarefa indiceTarefa = tarefas.get(indiceencontrado);
             indiceTarefa.setStatus(Status.CONCLUIDO);
+            return true;
         }
-
+        return false;
     }
 
-    public void cancelarTarefa(String nome) {
+    public boolean cancelarTarefa(String nome) {
 
         int indiceencontrado = procurarTarefas(nome);
         if (indiceencontrado == -1) {
@@ -35,13 +37,14 @@ public class GerenciadorDeTarefas {
             Tarefa indiceTarefa = tarefas.get(indiceencontrado);
             indiceTarefa.setStatus(Status.CANCELADO);
             tarefas.remove(indiceencontrado);
+            return true;
         }
-
+        return false;
 
 
 
     }
-    private int procurarTarefas(String nome) {
+    public int procurarTarefas(String nome) {
         int holder = -1;
         for (int i = 0; i < tarefas.size(); i++)
         {
@@ -61,9 +64,9 @@ public class GerenciadorDeTarefas {
         //for (Tarefa tarefa : tarefas)
             {
             if (resultado == null) {
-                resultado = (i + 1) + " nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus();
+                resultado = (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus();
             } else {
-                resultado += ("\n" + (i + 1) + " nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus());
+                resultado += ("\n" + (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus());
             }
         }
         return resultado;

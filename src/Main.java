@@ -55,17 +55,25 @@ public class Main {
                     case "Concluir":
                     case "concluir":
                         System.out.println("Qual o numero da tarefa que deseja concluir?");
-                        gerente.concluirTarefa(entrada.nextLine());
-                        System.out.println("Tarefa concluida, o que deseja fazer agora?  ");
-                        menu = false;
-                        break;
+                        boolean achou = gerente.concluirTarefa(entrada.nextLine());
+
+                         if (achou == true){
+                             System.out.println("Tarefa concluida, o que deseja fazer agora?  ");
+                             menu = false;
+                             break;
+                        }  else {break;}
+
                     case "Cancelar":
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
-                        gerente.cancelarTarefa(entrada.nextLine());
-                        System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
-                        menu = false;
-                        break;
+                        achou = gerente.cancelarTarefa(entrada.nextLine());
+                        if(achou == true)
+                        {
+                            System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
+                            menu = false;
+                            break;
+                        }else{break;}
+
                     case "Voltar":
                     case "voltar":
                         menu = false;
