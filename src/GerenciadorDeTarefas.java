@@ -14,15 +14,15 @@ public class GerenciadorDeTarefas {
         tarefas.add(novaTarefa);
     }
 
-    public void concluirTarefa(int indice) {
+    public void concluirTarefa(String nome) {
 
-        if ( indice <= 0 || indice > tarefas.toArray().length){
-            System.out.println("Numero invalido, por favor, digite outra opçao");
-        }else  {
-            Tarefa indiceTarefa = tarefas.get(indice - 1);
-            indiceTarefa.setStatus(Status.CONCLUIDO);}
-
-
+        int indiceencontrado = procurarTarefas(nome);
+        if (indiceencontrado == -1) {
+            System.out.println("Nao encontrado");
+        }else {
+            Tarefa indiceTarefa = tarefas.get(indiceencontrado);
+            indiceTarefa.setStatus(Status.CONCLUIDO);
+        }
 
     }
 
@@ -35,6 +35,19 @@ public class GerenciadorDeTarefas {
         }
 
     }
+    private int procurarTarefas(String nome) {
+        int holder = -1;
+        for (int i = 0; i < tarefas.size(); i++)
+        {
+            if (tarefas.get(i).getNome().equals(nome))
+            {
+                holder = i;
+                break;
+            }
+        }
+    return holder;
+    }
+
 
     public String listarTarefas() {
         String resultado = null;

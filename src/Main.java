@@ -55,7 +55,7 @@ public class Main {
                     case "Concluir":
                     case "concluir":
                         System.out.println("Qual o numero da tarefa que deseja concluir?");
-                        gerente.concluirTarefa(entrada.nextInt());
+                        gerente.concluirTarefa(entrada.nextLine());
                         System.out.println("Tarefa concluida, o que deseja fazer agora?  ");
                         menu = false;
                         break;
@@ -74,7 +74,7 @@ public class Main {
 
                     default:
                         System.out.println("Por favor, digite uma opção válida.");
-                        menu = false;
+
                 }
 
 
