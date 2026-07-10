@@ -11,7 +11,15 @@ public class GerenciadorDeTarefas {
 
     public void adicionarTarefa(String nome) {
         Tarefa novaTarefa = new Tarefa(nome);
-        tarefas.add(novaTarefa);
+        int indiceencontrado = procurarTarefas(nome);
+        if (indiceencontrado == -1) {
+            tarefas.add(novaTarefa);
+        }else
+        {
+            System.out.println("Essa tarefa já existe");
+        }
+
+
     }
 
     public boolean concluirTarefa(String nome) {

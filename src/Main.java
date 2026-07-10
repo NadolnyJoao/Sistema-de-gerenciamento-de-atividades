@@ -14,7 +14,7 @@ public class Main {
 
                 System.out.println("Tarefas - Menu - Sair");
                 String escolhausrmenu = entrada.nextLine();
-                String noEnter = escolhausrmenu.replace("\n" , " ");
+
                 switch (escolhausrmenu) {
 
                     case "Menu":
@@ -54,7 +54,7 @@ public class Main {
 
                     case "Concluir":
                     case "concluir":
-                        System.out.println("Qual o numero da tarefa que deseja concluir?");
+                        System.out.println("Qual tarefa deseja concluir?");
                         boolean achou = gerente.concluirTarefa(entrada.nextLine());
 
                          if (achou == true){
