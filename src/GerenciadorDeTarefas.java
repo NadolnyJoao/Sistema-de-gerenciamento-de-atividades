@@ -71,11 +71,25 @@ public class GerenciadorDeTarefas {
         for (int i = 0; i < tarefas.size(); i++)
         //for (Tarefa tarefa : tarefas)
             {
-            if (resultado == null) {
-                resultado = (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus();
-            } else {
-                resultado += ("\n" + (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus());
-            }
+                if(tarefas.get(i).getStatus() == Status.CONCLUIDO)
+                {
+                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
+
+                }
+                else if(tarefas.get(i).getStatus() == Status.CANCELADO)
+                {
+                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
+
+                }
+                else if(tarefas.get(i).getStatus() == Status.PENDENTE)
+                {
+                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
+
+                }
+
+            //if (resultado == null) {
+              //  resultado = (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
+            //}
         }
         return resultado;
 

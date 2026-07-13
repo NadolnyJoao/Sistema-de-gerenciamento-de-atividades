@@ -28,7 +28,33 @@ public class Main {
                         String showtarefas = gerente.listarTarefas();
                         if(showtarefas == null) {
                             System.out.println("\n Voce nao tem nenhuma tarefa adicionada, \n por favor, adicione alguma.");
-                        }else System.out.println(showtarefas);
+                        }else
+                        {
+                            String tarefasoption = null;
+                            System.out.println("\n Quais tarefas você quer listar?");
+                            switch (tarefasoption)
+                            {
+                                case "Pendentes":
+                                case "pendentes":
+
+                                    break;
+                                case "Todas":
+                                case "todas":
+
+                                    break;
+                                case "Concluidas":
+                                case "concluidas":
+
+                                    break;
+                                case "Canceladas":
+                                case "canceladas":
+
+                                    break;
+
+
+
+                            }
+                        }
 
                         break;
                     case "Sair":
@@ -57,7 +83,7 @@ public class Main {
                         System.out.println("Qual tarefa deseja concluir?");
                         boolean achou = gerente.concluirTarefa(entrada.nextLine());
 
-                         if (achou == true){
+                         if (achou){
                              System.out.println("Tarefa concluida, o que deseja fazer agora?  ");
                              menu = false;
                              break;
@@ -67,7 +93,7 @@ public class Main {
                     case "cancelar":
                         System.out.println("Qual tarefa quer cancelar?");
                         achou = gerente.cancelarTarefa(entrada.nextLine());
-                        if(achou == true)
+                        if(achou)
                         {
                             System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
                             menu = false;
