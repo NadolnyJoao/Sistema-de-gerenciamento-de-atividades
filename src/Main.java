@@ -30,7 +30,7 @@ public class Main {
                             System.out.println("\n Voce nao tem nenhuma tarefa adicionada, \n por favor, adicione alguma.");
                         }else
                         {
-                            System.out.println("\n Quais tarefas você quer listar?");
+                            System.out.println("\n Quais tarefas você quer listar? \n Todas - Pendentes - Concluidas - Canceladas");
                             String tarefasoption = entrada.nextLine();
                             switch (tarefasoption)
                             {
