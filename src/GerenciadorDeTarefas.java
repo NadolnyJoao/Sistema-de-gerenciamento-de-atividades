@@ -66,27 +66,16 @@ public class GerenciadorDeTarefas {
     }
 
 
-    public String listarTarefas() {
+    public String listarTarefas(Status filtro) {
         String resultado = null;
         for (int i = 0; i < tarefas.size(); i++)
         //for (Tarefa tarefa : tarefas)
             {
-                if(tarefas.get(i).getStatus() == Status.CONCLUIDO)
+                if(tarefas.get(i).getStatus() == filtro)
                 {
                     resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
 
                 }
-                else if(tarefas.get(i).getStatus() == Status.CANCELADO)
-                {
-                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
-
-                }
-                else if(tarefas.get(i).getStatus() == Status.PENDENTE)
-                {
-                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
-
-                }
-
             //if (resultado == null) {
               //  resultado = (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
             //}

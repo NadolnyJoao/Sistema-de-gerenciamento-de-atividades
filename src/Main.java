@@ -36,7 +36,7 @@ public class Main {
                             {
                                 case "Pendentes":
                                 case "pendentes":
-
+                                    gerente.listarTarefas((Status.PENDENTE));
                                     break;
                                 case "Todas":
                                 case "todas":
@@ -44,11 +44,11 @@ public class Main {
                                     break;
                                 case "Concluidas":
                                 case "concluidas":
-
+                                    gerente.listarTarefas((Status.CONCLUIDO));
                                     break;
                                 case "Canceladas":
                                 case "canceladas":
-
+                                    gerente.listarTarefas((Status.CANCELADO));
                                     break;
 
 
