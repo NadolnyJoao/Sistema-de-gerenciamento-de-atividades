@@ -44,7 +44,7 @@ public class GerenciadorDeTarefas {
         }else {
             Tarefa indiceTarefa = tarefas.get(indiceencontrado);
             indiceTarefa.setStatus(Status.CANCELADO);
-            tarefas.remove(indiceencontrado);
+            //tarefas.remove(indiceencontrado);
             return true;
         }
         return false;
@@ -67,10 +67,14 @@ public class GerenciadorDeTarefas {
 
 
     public String listarTarefas(Status filtro) {
-        String resultado = null;
+        String resultado = "";
         for (int i = 0; i < tarefas.size(); i++)
         //for (Tarefa tarefa : tarefas)
             {
+                if (filtro == null)
+                {
+                    resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
+                }
                 if(tarefas.get(i).getStatus() == filtro)
                 {
                     resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";

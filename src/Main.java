@@ -25,30 +25,32 @@ public class Main {
                     case "Tarefas":
                     case "tarefas":
 
-                        String showtarefas = gerente.listarTarefas();
-                        if(showtarefas == null) {
+                        String showtarefas = gerente.listarTarefas(null);
+                        if(showtarefas.isEmpty()) {
                             System.out.println("\n Voce nao tem nenhuma tarefa adicionada, \n por favor, adicione alguma.");
                         }else
                         {
-                            String tarefasoption = null;
                             System.out.println("\n Quais tarefas você quer listar?");
+                            String tarefasoption = entrada.nextLine();
                             switch (tarefasoption)
                             {
                                 case "Pendentes":
                                 case "pendentes":
-                                    gerente.listarTarefas((Status.PENDENTE));
+                                    System.out.println(gerente.listarTarefas((Status.PENDENTE)));
+
                                     break;
                                 case "Todas":
                                 case "todas":
+                                    System.out.println(gerente.listarTarefas((null)));
 
                                     break;
                                 case "Concluidas":
                                 case "concluidas":
-                                    gerente.listarTarefas((Status.CONCLUIDO));
+                                    System.out.println(gerente.listarTarefas((Status.CONCLUIDO)));
                                     break;
                                 case "Canceladas":
                                 case "canceladas":
-                                    gerente.listarTarefas((Status.CANCELADO));
+                                    System.out.println (gerente.listarTarefas((Status.CANCELADO)));
                                     break;
 
 
@@ -73,7 +75,7 @@ public class Main {
                     case "adicionar":
                         System.out.println("Qual a tarefa a ser adicionada?");
                         gerente.adicionarTarefa(entrada.nextLine());
-                        String showtarefas = gerente.listarTarefas();
+                        String showtarefas = gerente.listarTarefas(null);
                         System.out.println(showtarefas);
                         menu = false;
                         break;
@@ -95,7 +97,7 @@ public class Main {
                         achou = gerente.cancelarTarefa(entrada.nextLine());
                         if(achou)
                         {
-                            System.out.println("Tarefa cancelada, ela não vai mais aparecer em sua lista de tarefas");
+                            System.out.println("Tarefa cancelada com sucesso");
                             menu = false;
                             break;
                         }else{break;}
