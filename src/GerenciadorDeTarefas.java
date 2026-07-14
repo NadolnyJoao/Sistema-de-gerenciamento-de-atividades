@@ -75,7 +75,7 @@ public class GerenciadorDeTarefas {
                 {
                     resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
                 }
-                if(tarefas.get(i).getStatus() == filtro)
+                else if(tarefas.get(i).getStatus() == filtro)
                 {
                     resultado += (i + 1) + " - nome: " + tarefas.get(i).getNome() + " Status: " + tarefas.get(i).getStatus() + "\n";
 
