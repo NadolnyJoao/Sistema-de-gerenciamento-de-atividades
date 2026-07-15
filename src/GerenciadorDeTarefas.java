@@ -56,7 +56,7 @@ public class GerenciadorDeTarefas {
         int holder = -1;
         for (int i = 0; i < tarefas.size(); i++)
         {
-            if (tarefas.get(i).getNome().equals(nome))
+            if (tarefas.get(i).getNome().equalsIgnoreCase(nome))
             {
                 holder = i;
                 break;

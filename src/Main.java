@@ -1,4 +1,5 @@
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -14,16 +15,15 @@ public class Main {
 
                 System.out.println("Tarefas - Menu - Sair");
                 String escolhausrmenu = entrada.nextLine();
+                String escolhamenuUpper = escolhausrmenu.toUpperCase();
 
-                switch (escolhausrmenu) {
+                switch (escolhamenuUpper) {
 
-                    case "Menu":
-                    case "menu":
+                    case "MENU":
                         menu = true;
                         break;
 
-                    case "Tarefas":
-                    case "tarefas":
+                    case "TAREFAS":
 
                         String showtarefas = gerente.listarTarefas(null);
                         if(showtarefas.isEmpty()) {
@@ -32,24 +32,21 @@ public class Main {
                         {
                             System.out.println("\n Quais tarefas você quer listar? \n Todas - Pendentes - Concluidas - Canceladas");
                             String tarefasoption = entrada.nextLine();
-                            switch (tarefasoption)
+                            String tarefasoptionUpper = tarefasoption.toUpperCase();
+                            switch (tarefasoptionUpper)
                             {
-                                case "Pendentes":
-                                case "pendentes":
+                                case "PENDENTES":
                                     System.out.println(gerente.listarTarefas((Status.PENDENTE)));
 
                                     break;
-                                case "Todas":
-                                case "todas":
+                                case "TODAS":
                                     System.out.println(gerente.listarTarefas((null)));
 
                                     break;
-                                case "Concluidas":
-                                case "concluidas":
+                                case "CONCLUIDAS":
                                     System.out.println(gerente.listarTarefas((Status.CONCLUIDO)));
                                     break;
-                                case "Canceladas":
-                                case "canceladas":
+                                case "CANCELADAS":
                                     System.out.println (gerente.listarTarefas((Status.CANCELADO)));
                                     break;
 
@@ -59,8 +56,7 @@ public class Main {
                         }
 
                         break;
-                    case "Sair":
-                    case "sair":
+                    case "SAIR":
                         System.out.println("Encerrando...");
                         sair = true;
                         break;
@@ -70,9 +66,9 @@ public class Main {
                 if (menu) {
                 System.out.println("O que deseja fazer? \n adicionar: Adicionar uma tarefa. \n concluir: Concluir uma tarefa. \n cancelar: Cancelar uma tarefa. \n voltar: volta para o menu");
                 String escolhausr = entrada.nextLine();
-                switch (escolhausr) {
-                    case "Adicionar":
-                    case "adicionar":
+                String escolhausrUpper = escolhausr.toUpperCase();
+                switch (escolhausrUpper) {
+                    case "ADICIONAR":
                         System.out.println("Qual a tarefa a ser adicionada?");
                         gerente.adicionarTarefa(entrada.nextLine());
                         String showtarefas = gerente.listarTarefas(null);
@@ -80,8 +76,7 @@ public class Main {
                         menu = false;
                         break;
 
-                    case "Concluir":
-                    case "concluir":
+                    case "CONCLUIR":
                         System.out.println("Qual tarefa deseja concluir?");
                         boolean achou = gerente.concluirTarefa(entrada.nextLine());
 
@@ -91,8 +86,7 @@ public class Main {
                              break;
                         }  else {break;}
 
-                    case "Cancelar":
-                    case "cancelar":
+                    case "CANCELAR":
                         System.out.println("Qual tarefa quer cancelar?");
                         achou = gerente.cancelarTarefa(entrada.nextLine());
                         if(achou)
@@ -102,8 +96,7 @@ public class Main {
                             break;
                         }else{break;}
 
-                    case "Voltar":
-                    case "voltar":
+                    case "VOLTAR":
                         menu = false;
                         break;
 
