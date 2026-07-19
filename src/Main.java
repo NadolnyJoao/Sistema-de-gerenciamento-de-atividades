@@ -12,10 +12,11 @@ public class Main {
         JButton btnNorte = new JButton("Norte");
         btnNorte.setPreferredSize(new Dimension(100, 80));
         JButton btnCentro = new JButton("Centro");
-        JButton btnSul = new JButton("Norte");
-        btnNorte.setPreferredSize(new Dimension(100, 80));
-        janela.setVisible(true);
         janela.add(btnCentro, BorderLayout.CENTER);
         janela.add(btnNorte, BorderLayout.NORTH);
+
+
+
+        janela.setVisible(true);
     }
 }
