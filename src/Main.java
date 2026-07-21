@@ -18,18 +18,7 @@ public class Main {
         // --- Calcula um tamanho de fonte proporcional à tela ---
         int tamanhoFonte = tela.width / 100;
         Font fontePadrao = new Font("SansSerif", Font.PLAIN, tamanhoFonte);
-
-        // --- Botão do topo (NORTH) ---
-        JButton btnNorte = new JButton("Norte");
-        btnNorte.setFont(fontePadrao);
-        btnNorte.setPreferredSize(new Dimension(100, 80));
-        janela.add(btnNorte, BorderLayout.NORTH);
-
-        // --- Botão do meio (CENTER) ---
-        JButton btnCentro = new JButton("Centro");
-        btnCentro.setFont(fontePadrao);
-        janela.add(btnCentro, BorderLayout.CENTER);
-
+        
         // --- Painel de baixo (SOUTH), com os botões Tarefas e Menu ---
         JPanel inicio = new JPanel();
         JButton btnTarefas = new JButton("Tarefas");
