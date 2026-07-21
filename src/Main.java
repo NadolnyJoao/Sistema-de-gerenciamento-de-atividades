@@ -3,7 +3,8 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-
+        GerenciadorDeTarefas gerente = new GerenciadorDeTarefas();
+        gerente.adicionarTarefa("TarefaTeste");
         // --- Configuração básica da janela ---
         JFrame janela = new JFrame("Gerenciador de tarefas do João!");
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,6 +24,12 @@ public class Main {
         JPanel inicio = new JPanel();
         JButton btnTarefas = new JButton("Tarefas");
         btnTarefas.setFont(fontePadrao);
+        btnTarefas.addActionListener(event -> {
+
+            System.out.println(gerente.listarTarefas(null));
+            System.out.println("Foncionou");
+            });
+
         JButton btnMenu = new JButton("Menu");
         btnMenu.setFont(fontePadrao);
         inicio.add(btnTarefas);
