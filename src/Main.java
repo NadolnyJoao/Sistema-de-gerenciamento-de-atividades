@@ -21,7 +21,9 @@ public class Main {
         Font fontePadrao = new Font("SansSerif", Font.PLAIN, tamanhoFonte);
         
         // --- Painel de baixo (SOUTH), com os botões Tarefas e Menu ---
+        JPanel holder = new JPanel(new CardLayout());
         JPanel inicio = new JPanel();
+        holder.add(inicio, "Tela Inicial");
         JButton btnTarefas = new JButton("Tarefas");
         btnTarefas.setFont(fontePadrao);
         btnTarefas.addActionListener(event -> {
@@ -34,7 +36,7 @@ public class Main {
         btnMenu.setFont(fontePadrao);
         inicio.add(btnTarefas);
         inicio.add(btnMenu);
-        janela.add(inicio, BorderLayout.CENTER);
+        janela.add(holder, BorderLayout.CENTER);
 
         // --- Centraliza a janela na tela e exibe ---
         janela.setLocationRelativeTo(null);
