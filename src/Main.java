@@ -2,43 +2,57 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) {
-        GerenciadorDeTarefas gerente = new GerenciadorDeTarefas();
-        gerente.adicionarTarefa("TarefaTeste");
-        // --- Configuração básica da janela ---
+        GerenciadorDeTarefas gerenciador = new GerenciadorDeTarefas();
+        gerenciador.adicionarTarefa("TarefaTeste");
+
+        // Configuração básica da janela
         JFrame janela = new JFrame("Gerenciador de tarefas do João!");
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setLayout(new BorderLayout());
 
-        // --- Calcula o tamanho da janela proporcional à tela do usuário ---
-        Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
-        int largura = (int) (tela.width * 0.26);
-        int altura = (int) (tela.height * 0.65);
-        janela.setSize(largura, altura);
+        // Tamanho da janela proporcional à tela do usuário
+        Dimension tamanhoTela = Toolkit.getDefaultToolkit().getScreenSize();
 
-        // --- Calcula um tamanho de fonte proporcional à tela ---
-        int tamanhoFonte = tela.width / 100;
-        Font fontePadrao = new Font("SansSerif", Font.PLAIN, tamanhoFonte);
-        
-        // --- Painel de baixo (SOUTH), com os botões Tarefas e Menu ---
-        JPanel holder = new JPanel(new CardLayout());
-        JPanel inicio = new JPanel();
-        holder.add(inicio, "Tela Inicial");
-        JButton btnTarefas = new JButton("Tarefas");
-        btnTarefas.setFont(fontePadrao);
-        btnTarefas.addActionListener(event -> {
+        int larguraJanela = (int) (tamanhoTela.width * 0.26);
+        int alturaJanela = (int) (tamanhoTela.height * 0.65);
 
-            System.out.println(gerente.listarTarefas(null));
-            System.out.println("Foncionou");
-            });
+        janela.setSize(larguraJanela, alturaJanela);
 
-        JButton btnMenu = new JButton("Menu");
-        btnMenu.setFont(fontePadrao);
-        inicio.add(btnTarefas);
-        inicio.add(btnMenu);
-        janela.add(holder, BorderLayout.CENTER);
+        // Tamanho da fonte proporcional à largura da tela
+        int tamanhoFonte = tamanhoTela.width / 100;
+        Font fontePadrao = new Font(
+                Font.SANS_SERIF,
+                Font.PLAIN,
+                tamanhoFonte
+        );
 
-        // --- Centraliza a janela na tela e exibe ---
+        // Painel principal com CardLayout
+        JPanel painelPrincipal = new JPanel(new CardLayout());
+        JPanel telaInicial = new JPanel();
+
+        painelPrincipal.add(telaInicial, "Tela Inicial");
+
+        // Botão Tarefas
+        JButton botaoTarefas = new JButton("Tarefas");
+        botaoTarefas.setFont(fontePadrao);
+
+        botaoTarefas.addActionListener(evento -> {
+            System.out.println(gerenciador.listarTarefas(null));
+            System.out.println("Funcionou");
+        });
+
+        // Botão Menu
+        JButton botaoMenu = new JButton("Menu");
+        botaoMenu.setFont(fontePadrao);
+
+        telaInicial.add(botaoTarefas);
+        telaInicial.add(botaoMenu);
+
+        janela.add(painelPrincipal, BorderLayout.CENTER);
+
+        // Centraliza e exibe a janela
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
     }
