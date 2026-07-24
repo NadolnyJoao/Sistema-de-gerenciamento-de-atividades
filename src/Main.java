@@ -20,7 +20,7 @@ public class Main {
 
         janela.setSize(larguraJanela, alturaJanela);
 
-        // Tamanho da fonte proporcional à largura da tela
+        // Tamanho da fonte proporcional à largura da tela, isso não esta padrao, a cada mensagem ou tela nova a fonte reseta
         int tamanhoFonte = tamanhoTela.width / 100;
         Font fontePadrao = new Font(
                 Font.SANS_SERIF,
