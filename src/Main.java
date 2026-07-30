@@ -31,12 +31,17 @@ public class Main {
         // Painel principal com CardLayout
         JPanel painelPrincipal = new JPanel(new CardLayout());
         JPanel telaInicial = new JPanel();
+        JPanel telaLista = new JPanel();
 
         painelPrincipal.add(telaInicial, "Tela Inicial");
+        painelPrincipal.add(telaLista, "Lista das tarefas");
 
         // Botão Tarefas
         JButton botaoTarefas = new JButton("Tarefas");
         botaoTarefas.setFont(fontePadrao);
+        //Botão Voltar
+        JButton botaoVoltar = new JButton("Voltar");
+        botaoVoltar.setFont(fontePadrao);
 
         botaoTarefas.addActionListener(evento -> {
             System.out.println(gerenciador.listarTarefas(null));
@@ -49,6 +54,7 @@ public class Main {
 
         telaInicial.add(botaoTarefas);
         telaInicial.add(botaoMenu);
+        telaLista.add(botaoVoltar);
 
         janela.add(painelPrincipal, BorderLayout.CENTER);
 
