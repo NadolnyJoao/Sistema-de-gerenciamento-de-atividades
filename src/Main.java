@@ -29,24 +29,30 @@ public class Main {
         );
 
         // Painel principal com CardLayout
-        JPanel painelPrincipal = new JPanel(new CardLayout());
+        CardLayout layoutC = new CardLayout();
+        JPanel painelPrincipal = new JPanel();
         JPanel telaInicial = new JPanel();
         JPanel telaLista = new JPanel();
-
+        painelPrincipal.setLayout(layoutC);
         painelPrincipal.add(telaInicial, "Tela Inicial");
         painelPrincipal.add(telaLista, "Lista das tarefas");
 
         // Botão Tarefas
         JButton botaoTarefas = new JButton("Tarefas");
         botaoTarefas.setFont(fontePadrao);
-        //Botão Voltar
-        JButton botaoVoltar = new JButton("Voltar");
-        botaoVoltar.setFont(fontePadrao);
-
         botaoTarefas.addActionListener(evento -> {
+            layoutC.show(painelPrincipal, "Lista das tarefas");
             System.out.println(gerenciador.listarTarefas(null));
             System.out.println("Funcionou");
         });
+
+        //Botão Voltar
+        JButton botaoVoltar = new JButton("Voltar");
+        botaoVoltar.setFont(fontePadrao);
+        botaoVoltar.addActionListener(evento ->{
+            layoutC.show(painelPrincipal, "Tela Inicial");
+        });
+
 
         // Botão Menu
         JButton botaoMenu = new JButton("Menu");
