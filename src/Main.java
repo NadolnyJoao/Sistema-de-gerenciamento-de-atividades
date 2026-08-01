@@ -42,8 +42,7 @@ public class Main {
         botaoTarefas.setFont(fontePadrao);
         botaoTarefas.addActionListener(evento -> {
             layoutC.show(painelPrincipal, "Lista das tarefas");
-            System.out.println(gerenciador.listarTarefas(null));
-            System.out.println("Funcionou");
+            
         });
 
         //Botão Voltar
