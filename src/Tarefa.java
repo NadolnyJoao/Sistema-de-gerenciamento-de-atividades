@@ -17,5 +17,6 @@ public class Tarefa {
     public void setStatus(Status novoStatus) {
         this.status = novoStatus;
     }
-
+    @Override
+    public String toString(){return this.nome;}
 }

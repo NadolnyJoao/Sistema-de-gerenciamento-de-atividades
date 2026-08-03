@@ -1,11 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
         GerenciadorDeTarefas gerenciador = new GerenciadorDeTarefas();
+        DefaultListModel<Tarefa> modeloLista = new DefaultListModel<>();
         gerenciador.adicionarTarefa("TarefaTeste");
+        ArrayList<Tarefa> tarefasAtuais = gerenciador.getTarefas();
+        for (Tarefa tarefa : tarefasAtuais)
+        {
+            modeloLista.addElement(tarefa);
+        }
+        JList<Tarefa> listaTarefas = new JList<>(modeloLista);
 
         // Configuração básica da janela
         JFrame janela = new JFrame("Gerenciador de tarefas do João!");
@@ -70,8 +78,7 @@ public class Main {
         });
 
         //Config da tela inicial
-        telaInicial.add(botaoTarefas);
-        telaInicial.add(botaoMenu);
+        telaInicial.add(listaTarefas);
         janela.add(painelPrincipal, BorderLayout.CENTER);
 
         //Config da tela de tarefas
