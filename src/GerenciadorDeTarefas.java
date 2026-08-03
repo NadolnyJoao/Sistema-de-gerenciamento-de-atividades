@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class GerenciadorDeTarefas {
     private ArrayList<Tarefa> tarefas;
 
+
     public GerenciadorDeTarefas() {
 
         this.tarefas = new ArrayList<Tarefa>();
@@ -87,5 +88,6 @@ public class GerenciadorDeTarefas {
         return resultado;
 
     }
+    public ArrayList<Tarefa> getTarefas(){return this.tarefas;}
 
 }
