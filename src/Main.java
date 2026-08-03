@@ -33,10 +33,11 @@ public class Main {
         JPanel painelPrincipal = new JPanel();
         JPanel telaInicial = new JPanel();
         JPanel telaLista = new JPanel();
+        JPanel telaMenu = new JPanel();
         painelPrincipal.setLayout(layoutC);
         painelPrincipal.add(telaInicial, "Tela Inicial");
         painelPrincipal.add(telaLista, "Lista das tarefas");
-
+        painelPrincipal.add(telaMenu, "Menu");
         // Botão Tarefas
         JButton botaoTarefas = new JButton("Tarefas");
         botaoTarefas.setFont(fontePadrao);
@@ -51,17 +52,36 @@ public class Main {
         botaoVoltar.addActionListener(evento ->{
             layoutC.show(painelPrincipal, "Tela Inicial");
         });
+        //Botão Voltar do Menu
+        JButton botaoVoltarDois = new JButton("Voltar");
+        botaoVoltarDois.setFont(fontePadrao);
+        botaoVoltarDois.addActionListener(evento ->{
+            layoutC.show(painelPrincipal, "Tela Inicial");
+        });
+
 
 
         // Botão Menu
         JButton botaoMenu = new JButton("Menu");
         botaoMenu.setFont(fontePadrao);
+        botaoMenu.addActionListener(evento ->{
+            layoutC.show(painelPrincipal, "Menu");
 
+        });
+
+        //Config da tela inicial
         telaInicial.add(botaoTarefas);
         telaInicial.add(botaoMenu);
+        janela.add(painelPrincipal, BorderLayout.CENTER);
+
+        //Config da tela de tarefas
         telaLista.add(botaoVoltar);
 
-        janela.add(painelPrincipal, BorderLayout.CENTER);
+
+        //Config da tela do Menu
+        telaMenu.add(botaoVoltarDois);
+
+
 
         // Centraliza e exibe a janela
         janela.setLocationRelativeTo(null);
