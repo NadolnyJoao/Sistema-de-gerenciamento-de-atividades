@@ -46,6 +46,8 @@ public class Main {
         painelPrincipal.add(telaInicial, "Tela Inicial");
         painelPrincipal.add(telaLista, "Lista das tarefas");
         painelPrincipal.add(telaMenu, "Menu");
+
+
         // Botão Tarefas
         JButton botaoTarefas = new JButton("Tarefas");
         botaoTarefas.setFont(fontePadrao);
@@ -66,6 +68,13 @@ public class Main {
         botaoVoltarDois.addActionListener(evento ->{
             layoutC.show(painelPrincipal, "Tela Inicial");
         });
+        //Botão Adicionar Tarefa
+        JButton botaoAdd = new JButton("Adicionar Tarefa");
+        botaoAdd.setFont(fontePadrao);
+        botaoAdd.addActionListener(evento -> {
+            gerenciador.adicionarTarefa("TarefaTestedois");
+            telaInicial.add(listaTarefas);
+        });
 
 
 
@@ -80,6 +89,7 @@ public class Main {
         //Config da tela inicial
         telaInicial.add(listaTarefas);
         janela.add(painelPrincipal, BorderLayout.CENTER);
+        telaInicial.add(botaoAdd);
 
         //Config da tela de tarefas
         telaLista.add(botaoVoltar);
