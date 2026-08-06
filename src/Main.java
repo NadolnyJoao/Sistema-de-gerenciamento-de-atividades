@@ -70,7 +70,20 @@ public class Main {
 
             @Override
             public void mouseClicked(MouseEvent evento) {
-                menuOpcoes.show(listaTarefas, evento.getX(), evento.getY());
+                int indiceClicado = listaTarefas.locationToIndex(evento.getPoint());
+                if (indiceClicado != -1){
+                   Rectangle areaTarefa = listaTarefas.getCellBounds(indiceClicado, indiceClicado);
+                   if (areaTarefa.contains(evento.getPoint())){
+                        listaTarefas.setSelectedIndex(indiceClicado);
+                       menuOpcoes.show(listaTarefas, evento.getX(), evento.getY());
+                   }else {
+                       listaTarefas.clearSelection();
+                   }
+                }else  if (indiceClicado == -1){
+                    listaTarefas.clearSelection();
+                }
+
+                //
 
             }
 
