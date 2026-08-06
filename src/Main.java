@@ -72,24 +72,31 @@ public class Main {
         JButton botaoAdd = new JButton("Adicionar Tarefa");
         botaoAdd.setFont(fontePadrao);
         botaoAdd.addActionListener(evento -> {
-            gerenciador.adicionarTarefa("TarefaTestedois");
-            telaInicial.add(listaTarefas);
-        });
+           // gerenciador.adicionarTarefa("TarefaTestedois");
+            String tarefaUsr = JOptionPane.showInputDialog(janela, "Qual a tarefa a ser adicionada?");
+            if ((tarefaUsr != null)&& (!tarefaUsr.isBlank())){
+                gerenciador.adicionarTarefa(tarefaUsr);
+            }
+           modeloLista.clear();
+           ArrayList<Tarefa> tarefasAtualizadas = gerenciador.getTarefas();
+            for (Tarefa tarefa : tarefasAtualizadas)
+            {
+                modeloLista.addElement(tarefa);
+            }
 
+        });
+        //
 
 
         // Botão Menu
-        JButton botaoMenu = new JButton("Menu");
-        botaoMenu.setFont(fontePadrao);
-        botaoMenu.addActionListener(evento ->{
-            layoutC.show(painelPrincipal, "Menu");
 
-        });
 
         //Config da tela inicial
-        telaInicial.add(listaTarefas);
+        telaInicial.setLayout(new BorderLayout());
+        telaInicial.add(listaTarefas, BorderLayout.CENTER);
         janela.add(painelPrincipal, BorderLayout.CENTER);
-        telaInicial.add(botaoAdd);
+        telaInicial.add(botaoAdd, BorderLayout.NORTH);
+        JPopupMenu menuOpcoes = new JPopupMenu();
 
         //Config da tela de tarefas
         telaLista.add(botaoVoltar);

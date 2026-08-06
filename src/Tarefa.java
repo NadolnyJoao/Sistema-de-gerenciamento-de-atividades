@@ -18,5 +18,5 @@ public class Tarefa {
         this.status = novoStatus;
     }
     @Override
-    public String toString(){return this.nome;}
+    public String toString(){return this.nome + " - " + this.status;}
 }
