@@ -10,11 +10,8 @@ public class Main {
         GerenciadorDeTarefas gerenciador = new GerenciadorDeTarefas();
         DefaultListModel<Tarefa> modeloLista = new DefaultListModel<>();
         gerenciador.adicionarTarefa("TarefaTeste");
-        ArrayList<Tarefa> tarefasAtuais = gerenciador.getTarefas();
-        for (Tarefa tarefa : tarefasAtuais)
-        {
-            modeloLista.addElement(tarefa);
-        }
+
+        atualizarLista(modeloLista, gerenciador);
         JList<Tarefa> listaTarefas = new JList<>(modeloLista);
 
         // Configuração básica da janela
@@ -41,14 +38,11 @@ public class Main {
         JMenuItem concluir = new JMenuItem("Concluir");
         concluir.addActionListener(evento -> {
             Tarefa tarefaSelecionada = listaTarefas.getSelectedValue();
+
             if (tarefaSelecionada != null){
                 String nomeDaTarefa = tarefaSelecionada.getNome();
                 gerenciador.concluirTarefa(nomeDaTarefa);
-                modeloLista.clear();
-                for (Tarefa tarefa : tarefasAtuais)
-                {
-                    modeloLista.addElement(tarefa);
-                }
+                atualizarLista(modeloLista, gerenciador);
             }
         });
         menuOpcoes.add(concluir);
@@ -59,10 +53,7 @@ public class Main {
             if (tarefaSelecionada != null){
                 String nomeDaTarefa = tarefaSelecionada.getNome();
                 gerenciador.cancelarTarefa(nomeDaTarefa);
-                modeloLista.clear();
-                for (Tarefa tarefa : tarefasAtuais){
-                    modeloLista.addElement(tarefa);
-                }
+                atualizarLista(modeloLista, gerenciador);
             }
         });
         menuOpcoes.add(cancelar);
@@ -79,7 +70,7 @@ public class Main {
                    }else {
                        listaTarefas.clearSelection();
                    }
-                }else  if (indiceClicado == -1){
+                }else{
                     listaTarefas.clearSelection();
                 }
 
@@ -131,12 +122,7 @@ public class Main {
             if ((tarefaUsr != null)&& (!tarefaUsr.isBlank())){
                 gerenciador.adicionarTarefa(tarefaUsr);
             }
-           modeloLista.clear();
-           ArrayList<Tarefa> tarefasAtualizadas = gerenciador.getTarefas();
-            for (Tarefa tarefa : tarefasAtualizadas)
-            {
-                modeloLista.addElement(tarefa);
-            }
+            atualizarLista(modeloLista, gerenciador);
 
         });
         //
@@ -163,5 +149,13 @@ public class Main {
         // Centraliza e exibe a janela
         janela.setLocationRelativeTo(null);
         janela.setVisible(true);
+    }
+    private static void atualizarLista(DefaultListModel<Tarefa> modeloLista, GerenciadorDeTarefas gerenciador){
+        modeloLista.clear();
+        ArrayList<Tarefa> tarefasAtuais = gerenciador.getTarefas();
+        for (Tarefa tarefa : tarefasAtuais){
+            modeloLista.addElement(tarefa);
+        }
+
     }
 }
