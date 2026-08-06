@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class Main {
@@ -35,6 +37,45 @@ public class Main {
                 Font.PLAIN,
                 tamanhoFonte
         );
+        JPopupMenu menuOpcoes = new JPopupMenu();
+        JMenuItem concluir = new JMenuItem("Concluir");
+        concluir.addActionListener(evento -> {
+            Tarefa tarefaSelecionada = listaTarefas.getSelectedValue();
+            if (tarefaSelecionada != null){
+                String nomeDaTarefa = tarefaSelecionada.getNome();
+                gerenciador.concluirTarefa(nomeDaTarefa);
+                modeloLista.clear();
+                for (Tarefa tarefa : tarefasAtuais)
+                {
+                    modeloLista.addElement(tarefa);
+                }
+            }
+        });
+        menuOpcoes.add(concluir);
+
+        JMenuItem cancelar = new JMenuItem("Cancelar");
+        cancelar.addActionListener(evento -> {
+            Tarefa tarefaSelecionada = listaTarefas.getSelectedValue();
+            if (tarefaSelecionada != null){
+                String nomeDaTarefa = tarefaSelecionada.getNome();
+                gerenciador.cancelarTarefa(nomeDaTarefa);
+                modeloLista.clear();
+                for (Tarefa tarefa : tarefasAtuais){
+                    modeloLista.addElement(tarefa);
+                }
+            }
+        });
+        menuOpcoes.add(cancelar);
+        listaTarefas.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent evento) {
+                menuOpcoes.show(listaTarefas, evento.getX(), evento.getY());
+
+            }
+
+        });
+
 
         // Painel principal com CardLayout
         CardLayout layoutC = new CardLayout();
@@ -96,7 +137,6 @@ public class Main {
         telaInicial.add(listaTarefas, BorderLayout.CENTER);
         janela.add(painelPrincipal, BorderLayout.CENTER);
         telaInicial.add(botaoAdd, BorderLayout.NORTH);
-        JPopupMenu menuOpcoes = new JPopupMenu();
 
         //Config da tela de tarefas
         telaLista.add(botaoVoltar);
