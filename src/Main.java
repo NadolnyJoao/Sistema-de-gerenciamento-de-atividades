@@ -7,6 +7,11 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        }catch (Exception erro){
+            erro.printStackTrace();
+        }
         GerenciadorDeTarefas gerenciador = new GerenciadorDeTarefas();
         DefaultListModel<Tarefa> modeloLista = new DefaultListModel<>();
         gerenciador.adicionarTarefa("TarefaTeste");
@@ -27,13 +32,6 @@ public class Main {
 
         janela.setSize(larguraJanela, alturaJanela);
 
-        // Tamanho da fonte proporcional à largura da tela, isso não esta padrao, a cada mensagem ou tela nova a fonte reseta
-        int tamanhoFonte = tamanhoTela.width / 100;
-        Font fontePadrao = new Font(
-                Font.SANS_SERIF,
-                Font.PLAIN,
-                tamanhoFonte
-        );
         JPopupMenu menuOpcoes = new JPopupMenu();
         JMenuItem concluir = new JMenuItem("Concluir");
         concluir.addActionListener(evento -> {
@@ -93,29 +91,9 @@ public class Main {
         painelPrincipal.add(telaMenu, "Menu");
 
 
-        // Botão Tarefas
-        JButton botaoTarefas = new JButton("Tarefas");
-        botaoTarefas.setFont(fontePadrao);
-        botaoTarefas.addActionListener(evento -> {
-            layoutC.show(painelPrincipal, "Lista das tarefas");
-            
-        });
 
-        //Botão Voltar
-        JButton botaoVoltar = new JButton("Voltar");
-        botaoVoltar.setFont(fontePadrao);
-        botaoVoltar.addActionListener(evento ->{
-            layoutC.show(painelPrincipal, "Tela Inicial");
-        });
-        //Botão Voltar do Menu
-        JButton botaoVoltarDois = new JButton("Voltar");
-        botaoVoltarDois.setFont(fontePadrao);
-        botaoVoltarDois.addActionListener(evento ->{
-            layoutC.show(painelPrincipal, "Tela Inicial");
-        });
         //Botão Adicionar Tarefa
         JButton botaoAdd = new JButton("Adicionar Tarefa");
-        botaoAdd.setFont(fontePadrao);
         botaoAdd.addActionListener(evento -> {
            // gerenciador.adicionarTarefa("TarefaTestedois");
             String tarefaUsr = JOptionPane.showInputDialog(janela, "Qual a tarefa a ser adicionada?");
@@ -125,7 +103,11 @@ public class Main {
             atualizarLista(modeloLista, gerenciador);
 
         });
-        //
+        //Botão Filtrar tarefas
+        JButton botaoFiltro = new JButton("Filtrar");
+        botaoFiltro.addActionListener(evento -> {
+
+        });
 
 
         // Botão Menu
@@ -136,15 +118,6 @@ public class Main {
         telaInicial.add(listaTarefas, BorderLayout.CENTER);
         janela.add(painelPrincipal, BorderLayout.CENTER);
         telaInicial.add(botaoAdd, BorderLayout.NORTH);
-
-        //Config da tela de tarefas
-        telaLista.add(botaoVoltar);
-
-
-        //Config da tela do Menu
-        telaMenu.add(botaoVoltarDois);
-
-
 
         // Centraliza e exibe a janela
         janela.setLocationRelativeTo(null);
