@@ -107,17 +107,22 @@ public class Main {
         JButton botaoFiltro = new JButton("Filtrar");
         botaoFiltro.addActionListener(evento -> {
 
+
         });
 
 
-        // Botão Menu
+        // Painel para alocar os botoes add e filtrar
+        JPanel painelTop = new JPanel();
+        painelTop.setLayout(new GridLayout(1, 2));
+        painelTop.add(botaoAdd);
+        painelTop.add(botaoFiltro);
 
 
         //Config da tela inicial
         telaInicial.setLayout(new BorderLayout());
         telaInicial.add(listaTarefas, BorderLayout.CENTER);
         janela.add(painelPrincipal, BorderLayout.CENTER);
-        telaInicial.add(botaoAdd, BorderLayout.NORTH);
+        telaInicial.add(painelTop, BorderLayout.NORTH);
 
         // Centraliza e exibe a janela
         janela.setLocationRelativeTo(null);
