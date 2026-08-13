@@ -1,0 +1,3 @@
+public enum Filtro {
+    TODAS, CANCELADAS, CONCLUIDAS, PENDENTES
+}

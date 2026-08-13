@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
 
+    private static Filtro filtroAtual = Filtro.TODAS;
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -106,7 +107,7 @@ public class Main {
         //Botão Filtrar tarefas
         JButton botaoFiltro = new JButton("Filtrar");
         botaoFiltro.addActionListener(evento -> {
-
+            //String filtroUsr = JOptionPane.show
 
         });
 
@@ -131,9 +132,10 @@ public class Main {
     private static void atualizarLista(DefaultListModel<Tarefa> modeloLista, GerenciadorDeTarefas gerenciador){
         modeloLista.clear();
         ArrayList<Tarefa> tarefasAtuais = gerenciador.getTarefas();
-        for (Tarefa tarefa : tarefasAtuais){
-            modeloLista.addElement(tarefa);
+        for (Tarefa tarefa : tarefasAtuais) {
+            if (tarefa.getStatus() != Status.CANCELADO) {
+                modeloLista.addElement(tarefa);
+            }
         }
-
     }
 }
