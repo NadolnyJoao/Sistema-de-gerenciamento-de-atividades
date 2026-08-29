@@ -106,8 +106,10 @@ public class Main {
         });
         //Botão Filtrar tarefas
         JButton botaoFiltro = new JButton("Filtrar");
+        String[] opcoesFiltro = {"Todas", "Canceladas", "Concluidas", "Pendentes"};
         botaoFiltro.addActionListener(evento -> {
             //String filtroUsr = JOptionPane.show
+            JOptionPane.QUESTION_MESSAGE
 
         });
 
