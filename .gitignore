@@ -1,0 +1,17 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Arquivos compilados do Java
+*.class
+out/
+bin/
+build/
+target/
+
+# Cópias criadas por conflitos de sincronização
+*.sync-conflict-*
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
